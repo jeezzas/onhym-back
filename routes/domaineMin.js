@@ -6,7 +6,7 @@ const verifyToken = require("./verifyToken");
 
 
 //GET Domaine
-router.get('/', (req,res, next)=>{
+router.get('/', verifyToken,(req,res, next)=>{
     Domaine.find().sort('-createdAt').exec().
     then(docs => {
         if (docs.length >= 0) {
@@ -27,7 +27,7 @@ router.get('/', (req,res, next)=>{
 
 
 //POST Domaine
-router.post('/',(req,res, next)=>{
+router.post('/', verifyToken ,(req,res, next)=>{
     const domaine = new Domaine({
         _id : new mongoose.Types.ObjectId(),
         nDomaine : req.body.nDomaine,
@@ -56,7 +56,7 @@ router.post('/',(req,res, next)=>{
 })
 
 //get Domaine by ID
-router.get("/:domaineID", (req, res, next) => {
+router.get("/:domaineID", verifyToken,(req, res, next) => {
     const id = req.params.domaineID;
     Domaine.findById(id)
       .exec()
@@ -77,7 +77,7 @@ router.get("/:domaineID", (req, res, next) => {
   });
 
 //PATCH Domaine by ID
-router.patch('/:domaineID', (req,res, next)=>{
+router.patch('/:domaineID',  verifyToken,(req,res, next)=>{
     const id = req.params.domaineID;
    
     Domaine.updateMany({ _id: id }, { $set: req.body })
@@ -95,7 +95,7 @@ router.patch('/:domaineID', (req,res, next)=>{
 })
 
 //DELETE Domaine by ID
-router.delete('/:domaineID', (req,res, next)=>{
+router.delete('/:domaineID', verifyToken,(req,res, next)=>{
     const id = req.params.domaineID;
     Domaine.remove({ _id: id })
       .exec()

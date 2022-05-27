@@ -51,7 +51,7 @@ router.post('/login', async(req,res)=>{
 
 
 //Register Admin
-router.post('/register',  async (req,res, next)=>{
+router.post('/register', verifyToken, async (req,res, next)=>{
     //validation before posting data 
 
     const {error} = registerValidation(req.body);
