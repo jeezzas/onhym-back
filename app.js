@@ -11,6 +11,7 @@ const adminRouter = require('./routes/admin');
 const entiteRouter = require('./routes/entiteAdm');
 const geoRouter = require('./routes/geo');
 const subRouter = require('./routes/subs');
+const regRouter = require('./routes/regi');
 const dotenv = require('dotenv');
 const cors = require('cors');
 dotenv.config();
@@ -50,6 +51,7 @@ app.use('/entiteAdm',entiteRouter);
 app.use('/admin',adminRouter);
 app.use('/geologue',geoRouter);
 app.use('/substance',subRouter);
+app.use('/region',regRouter);
 
 
 // catch 404 and forward to error handler

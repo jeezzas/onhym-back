@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const mongoose = require("mongoose");
 const Admin = require("../models/administrateur");
-const RefreshToken = require('../models/refreshToken');
 const {registerValidation, loginValidation } = require('./RouteValidation');
 const verifyToken = require('./verifyToken');
 const { token } = require('morgan');
